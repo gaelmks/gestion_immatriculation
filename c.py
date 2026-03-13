@@ -1,3 +1,4 @@
+import string
 class Mot:
     def __init__(self,mot1,mot2,dict):
         self.mot1=mot1
@@ -14,22 +15,31 @@ class ajout(Mot):
     pass
     
     def MethodeAjout(self):
-        def ajoute(a,b,c):
-            a=self.mot1
-            b-self.mot2
-            c=self.dict
-            if not a in c:
-                c[a]=b
+            if not self.mot1 in self.mot2:
+                self.dict[self.mot1]=self.mot2
+                return self.dict
             else:
                 print("le mot existe deja")
 
 class supp(Mot):
     def MethodeSupp(self):
-        def supp(a,c):
-            a=self.mot1
-            c=self.dict
-            if a in c:
-                del c[a]
+            if self.mot1 in self.dict:
+                del self.dict[self.mot1]
+                return self.dict
             else:
                 print("Le mot est deja supprime")
 
+
+demande=input("Entrer ajout ou supprimer: ")
+if demande.lower()=='ajout':
+    apt=input("entrer la matricule:")
+    bpt=input("entrer le nom:")
+    cpt={}
+    ad=ajout(apt,bpt,cpt)
+    print(ad.MethodeAjout())
+    
+elif demande.lower()=='supprimer':
+     apt=input("Entrer la matricule:")
+     cpt={}
+     sp=supp(apt,cpt)
+     print(sp.MethodeSupp())
